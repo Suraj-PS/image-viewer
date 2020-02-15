@@ -1,0 +1,11 @@
+.loginCardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.loginCard {
+    width: 300px;
+    margin: auto;
+}
