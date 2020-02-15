@@ -15,7 +15,10 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            validationTextClass: "displayNone"
+            usernameEmptyValidation : "displayNone",
+            passwordEmptyValidation : "displayNone",
+            validationTextClass: "displayNone",
+            accessToken : "8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784"
         }
     }
 
@@ -31,16 +34,26 @@ class Login extends Component {
         let correctUserName = "Suraj";
         let correctPassword = "upgrad123";
 
-        if (this.state.username !== correctUserName) {
-            this.setState({ validationTextClass: "displayValidation" });
-            return;
+        if (this.state.username === "") {
+            this.setState({usernameEmptyValidation : "displayBlock"});
         }
 
-        if (this.state.password !== correctPassword) {
-            this.setState({ validationTextClass: "displayValidation" });
-            return;
+        if (this.state.password === "") {
+            this.setState({passwordEmptyValidation : "displayBlock"});
         }
 
+        if (this.state.username !== "" & this.state.username !== correctUserName) {
+            this.setState({ validationTextClass: "displayBlock" });
+            return;
+        }
+        
+        if (this.state.password !== "" & this.state.password !== correctPassword) {
+            this.setState({ validationTextClass: "displayBlock" });
+            return;
+        }
+        
+        this.setState({usernameEmptyValidation : "displayNone"});
+        this.setState({passwordEmptyValidation : "displayNone"});
         this.setState({ validationTextClass: "displayNone" });
     }
 
@@ -57,10 +70,16 @@ class Login extends Component {
                                 <InputLabel htmlFor="username">Username</InputLabel>
                                 <Input id="username" placeholder="Username" onChange={this.usernameChangeHandler} />
                             </FormControl>
+                            <FormHelperText className={this.state.usernameEmptyValidation}>
+                                <span className="displayRed">required</span>
+                            </FormHelperText>
                             <FormControl required={true}>
-                                <InputLabel htmlFor="passowrd">Password</InputLabel>
+                                <InputLabel htmlFor="password">Password</InputLabel>
                                 <Input id="password" placeholder="Password" onChange={this.passwordChangeHandler} />
                             </FormControl>
+                            <FormHelperText className={this.state.passwordEmptyValidation}>
+                                <span className="displayRed">required</span>
+                            </FormHelperText>
                             <FormHelperText className={this.state.validationTextClass}>
                                 <span className="displayRed">Incorrect username and/or password</span>
                             </FormHelperText>
