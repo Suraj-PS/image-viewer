@@ -15,10 +15,10 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            usernameEmptyValidation : "displayNone",
-            passwordEmptyValidation : "displayNone",
+            usernameEmptyValidation: "displayNone",
+            passwordEmptyValidation: "displayNone",
             validationTextClass: "displayNone",
-            accessToken : "8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784"
+            accessToken: "8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784"
         }
     }
 
@@ -35,28 +35,30 @@ class Login extends Component {
         let correctPassword = "upgrad123";
 
         if (this.state.username === "") {
-            this.setState({usernameEmptyValidation : "displayBlock"});
+            this.setState({ usernameEmptyValidation: "displayBlock" });
+        } else {
+            this.setState({ usernameEmptyValidation: "displayNone" });
         }
 
         if (this.state.password === "") {
-            this.setState({passwordEmptyValidation : "displayBlock"});
+            this.setState({ passwordEmptyValidation: "displayBlock" });
+        } else {
+            this.setState({ passwordEmptyValidation: "displayNone" });
         }
 
         if (this.state.username !== "" & this.state.username !== correctUserName) {
             this.setState({ validationTextClass: "displayBlock" });
             return;
         }
-        
+
         if (this.state.password !== "" & this.state.password !== correctPassword) {
             this.setState({ validationTextClass: "displayBlock" });
             return;
         }
-        
-        this.setState({usernameEmptyValidation : "displayNone"});
-        this.setState({passwordEmptyValidation : "displayNone"});
-        this.setState({ validationTextClass: "displayNone" });
-    }
 
+        this.setState({ validationTextClass: "displayNone" });
+        sessionStorage.setItem("access-token", this.state.accessToken);
+    }
 
     render() {
         return (
@@ -68,14 +70,14 @@ class Login extends Component {
                         <div className="cardContent">
                             <FormControl required={true}>
                                 <InputLabel htmlFor="username">Username</InputLabel>
-                                <Input id="username" placeholder="Username" onChange={this.usernameChangeHandler} />
+                                <Input type="text" id="username" placeholder="Username" onChange={this.usernameChangeHandler} />
                             </FormControl>
                             <FormHelperText className={this.state.usernameEmptyValidation}>
                                 <span className="displayRed">required</span>
                             </FormHelperText>
                             <FormControl required={true}>
                                 <InputLabel htmlFor="password">Password</InputLabel>
-                                <Input id="password" placeholder="Password" onChange={this.passwordChangeHandler} />
+                                <Input type="password" id="password" placeholder="Password" onChange={this.passwordChangeHandler} />
                             </FormControl>
                             <FormHelperText className={this.state.passwordEmptyValidation}>
                                 <span className="displayRed">required</span>
