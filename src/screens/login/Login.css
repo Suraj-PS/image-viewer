@@ -17,3 +17,15 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.displayNone {
+    display : none;
+}
+
+.displayValidation {
+    display : block;
+}
+
+.displayRed {
+    color: red;
+}
