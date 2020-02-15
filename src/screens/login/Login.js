@@ -4,7 +4,7 @@ import Header from "../../common/header/Header.js";
 class Login extends Component {
     render() {
         return(
-            <Header headerTitle="Login Page"/>
+            <Header headerTitle="Image Viewer"/>
         )
     }
 }
