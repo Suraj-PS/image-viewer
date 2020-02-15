@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
+import Header from "../../common/header/Header.js";
 
 class Login extends Component {
     render() {
         return(
-            <div>
-                Login Page
-            </div>
+            <Header headerTitle="Login Page"/>
         )
     }
 }
