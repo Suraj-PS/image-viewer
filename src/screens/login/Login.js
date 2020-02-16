@@ -48,16 +48,17 @@ class Login extends Component {
 
         if (this.state.username !== "" & this.state.username !== correctUserName) {
             this.setState({ validationTextClass: "displayBlock" });
-            return;
         }
 
         if (this.state.password !== "" & this.state.password !== correctPassword) {
             this.setState({ validationTextClass: "displayBlock" });
-            return;
         }
 
-        this.setState({ validationTextClass: "displayNone" });
-        sessionStorage.setItem("access-token", this.state.accessToken);
+        if (this.state.username === correctUserName & this.state.password === correctPassword) {
+            this.setState({ validationTextClass: "displayNone" });
+            sessionStorage.setItem("access-token", this.state.accessToken);
+        }
+
     }
 
     render() {
