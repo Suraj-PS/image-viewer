@@ -57,6 +57,7 @@ class Login extends Component {
         if (this.state.username === correctUserName & this.state.password === correctPassword) {
             this.setState({ validationTextClass: "displayNone" });
             sessionStorage.setItem("access-token", this.state.accessToken);
+            this.props.history.push("/home");
         }
 
     }
